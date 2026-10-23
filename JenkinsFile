@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Code Pull') {
+            steps {
+                git 'https://github.com/Chaithanya-Golla/Terraform-Practice.git'
+            }
+        }
+        stage('Terraform Init') {
+            steps {
+                dir('Day1-practce') {
+                    sh 'terraform init'
+                }
+            }
+        }
+        stage('Terraform Plan') {
+            steps {
+                dir('Day1-practce') {
+                    sh 'terraform plan'
+                }
+            }
+        }
+    }
+}
